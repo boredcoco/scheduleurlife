@@ -1,0 +1,52 @@
+<%= form_with(model: task) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <br/>
+    <%= form.text_field :name, class:"form-control", placeholder:"task name" %>
+  </div>
+
+  <div class="field">
+    <br/>
+    <%= form.text_field :category, class:"form-control", placeholder:"category" %>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <br/>
+      <%= form.number_field :due_day, class:"form-control", placeholder:"day" %>
+    </div>
+    <div class="col">
+      <br/>
+      <%= form.number_field :due_month, class:"form-control", placeholder:"month" %>
+    </div>
+    <div class="col">
+      <br/>
+      <%= form.number_field :due_year, class:"form-control", placeholder:"year" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <br/>
+    <%= form.text_field :comments, class:"form-control", placeholder:"additional comments" %>
+  </div>
+
+  <div class="field">
+    <br/>
+    <%= form.number_field :user_id, id: :task_user_id, type: :hidden, class:"form-control", value:current_user.id %>
+  </div>
+
+  <br/>
+  <%= form.submit class: "btn btn-dark", style:"background-color: #0D48A2"%>
+
+<% end %>

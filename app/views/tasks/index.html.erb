@@ -1,0 +1,36 @@
+<h1>Tasks</h1>
+
+<table class = "table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Task name </th>
+      <th>Category</th>
+      <th>Complete by</th>
+      <th>Additional comments</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+    <% if task.user == current_user %>
+        <tr>
+          <td><%= link_to task.name, task %></td>
+          <td><%= task.category %></td>
+          <td><%= task.due_day %> /
+              <%= task.due_month %> /
+              <%= task.due_year %></td>
+          <td><%= task.comments %></td>
+          <td><%= link_to 'Edit', edit_task_path(task), class: "btn btn-dark", style:"background-color: #0D48A2" %></td>
+          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' },
+            class: "btn btn-dark", style:"background-color: #0D48A2" %></td>
+        </tr>
+        <% end %>
+    <% end %>
+
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', new_task_path, class:"btn btn-dark", style:"background-color: #0D48A2" %>

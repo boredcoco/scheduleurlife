@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= @task.name %></h1>
+  <br/>
+  <h2 class="display-4"><%= @task.category %></h2>
+  <p class="lead">
+    Due on: <%= @task.due_day %> / <%= @task.due_month %> / <%= @task.due_year %>
+  </p>
+  <hr class="my-4">
+  <p>
+    <%= @task.comments %>
+  </p>
+    <%= link_to 'Edit', edit_task_path(@task), class: "btn btn-dark", style:"background-color: #0D48A2" %>
+    <%= link_to 'Back', tasks_path, class: "btn btn-dark", style:"background-color: #0D48A2"%>
+</div>

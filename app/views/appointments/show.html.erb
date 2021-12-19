@@ -1,0 +1,19 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= @appointment.name %></h1>
+  <br/>
+  <p class="lead">
+    Date: <%= @appointment.date_day %> / <%= @appointment.date_month %> / <%= @appointment.date_year %>
+    <br/>
+    Start: <%= @appointment.start_hour %>:<%= @appointment.start_min %> <%= @appointment.start_ampm %>
+    <br/>
+    End: <%= @appointment.end_hour %>:<%= @appointment.end_min %> <%= @appointment.end_ampm %>
+    <br/>
+    Location: <%= @appointment.location %>
+  </p>
+  <hr class="my-4">
+  <p>
+    <%= @appointment.comments %>
+  </p>
+    <%= link_to 'Edit', edit_appointment_path(@appointment), class: "btn btn-dark", style:"background-color: #0D48A2" %>
+    <%= link_to 'Back', appointments_path, class: "btn btn-dark", style:"background-color: #0D48A2"%>
+</div>

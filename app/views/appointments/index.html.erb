@@ -1,0 +1,37 @@
+<h1>Appointments</h1>
+
+<table class = "table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Location</th>
+      <th>Comments</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @appointments.each do |appointment| %>
+    <% if appointment.user == current_user %>
+      <tr>
+        <td><%= link_to appointment.name, appointment%></td>
+        <td><%= appointment.date_day %> /
+            <%= appointment.date_month %> /
+            <%= appointment.date_year %></td>
+        <td><%= appointment.start_hour %><%= appointment.start_min %> <%= appointment.start_ampm %></td>
+        <td><%= appointment.end_hour %><%= appointment.end_min %> <%= appointment.end_ampm %></td>
+        <td><%= appointment.location %></td>
+        <td><%= appointment.comments %></td>
+        <td><%= link_to 'Edit', edit_appointment_path(appointment), class: "btn btn-dark", style:"background-color: #0D48A2" %></td>
+        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' },
+          class: "btn btn-dark", style:"background-color: #0D48A2" %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Appointment', new_appointment_path, class:"btn btn-dark", style:"background-color: #0D48A2" %>

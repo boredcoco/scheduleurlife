@@ -1,0 +1,17 @@
+<% if user_signed_in?%>
+  <h1>Welcome <%=current_user.email%>!</h1>
+  <br/>
+  <h5>How are you today?</h5>
+<% else %>
+  <h1>Welcome!</h1>
+  <br/>
+  <h5>How are you today?</h5>
+<% end %>
+
+<br/>
+
+<span>not great :((((( </span>
+<input type="range" class="form-range w-75" id="customRange1">
+<span>AMAZEBALLS :DDDD </span> <br/><br/>
+
+<%= submit_tag 'you shure?', class: "btn btn-dark", style:"background-color: #0D48A2"%>

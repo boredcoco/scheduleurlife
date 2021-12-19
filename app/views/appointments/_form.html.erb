@@ -1,0 +1,102 @@
+<%= form_with(model: appointment) do |form| %>
+  <% if appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+      <ul>
+        <% appointment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <br/>
+    <%= form.text_field :name, class:"form-control", placeholder:"Appointment name" %>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <br/>
+        <%= form.number_field :date_day, class:"form-control", placeholder:"Day" %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="field">
+        <br/>
+        <%= form.number_field :date_month, class:"form-control", placeholder:"Month" %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="field">
+        <br/>
+        <%= form.number_field :date_year, class:"form-control", placeholder:"Year" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <br/>
+        <%= form.text_field :start_hour, class:"form-control", placeholder:"Start hour" %>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="field">
+        <br/>
+        <%= form.text_field :start_min, class:"form-control", placeholder:"Start minute" %>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="field">
+        <br/>
+        <%= form.select :start_ampm, [['AM'], ['PM']], class:"form-select form-select-lg mb-3"%>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="field">
+        <br/>
+        <%= form.text_field :end_hour, class:"form-control", placeholder:"End hour"%>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="field">
+        <br/>
+        <%= form.text_field :end_min, class:"form-control", placeholder:"End minute"%>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="field">
+        <br/>
+        <%= form.select :end_ampm, [['AM'], ['PM']], class:"form-select form-select-lg mb-3"%>
+      </div>
+    </div>
+
+    <div class="field">
+      <br/>
+      <%= form.text_field :location, class:"form-control", placeholder:"Location" %>
+    </div>
+
+  <div class="field">
+    <br/>
+    <%= form.text_field :comments, class:"form-control", placeholder:"Comments" %>
+  </div>
+
+  <div class="field">
+    <br/>
+    <%= form.number_field :user_id, id: :appointment_user_id, type: :hidden, class:"form-control", value:current_user.id %>
+  </div>
+
+</div>
+
+  <br/>
+  <%= form.submit class: "btn btn-dark", style:"background-color: #0D48A2"%>
+<% end %>
